@@ -1,37 +1,77 @@
 /**
  * Header
  */
+.body {
+  background-color: black;
+  height: 100vh;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.box {
+  /* position: relative; */
+  height:  auto;
+  width: auto;
+  display: block;
+  background: linear-gradient(0deg, gray, black, black);
+}
+
+.glowing::before{
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  background: linear-gradient(45deg, magenta, black, black, rgb(2, 92, 62), #0fa, crimson);
+  background-size: 400%;
+  width: calc(100% + 5px);
+  height: calc(100% + 5px);
+  z-index: -1;
+  /* animation: glower 50s linear infinite; */
+}
+
+@keyframes glower {
+  0% {
+    background-position: 0 0;
+  }
+  
+  50% {
+    background-position: 400% 0;
+  }
+  
+  100% {
+    background-position: 0 0;
+  }
+}
 
 .header {
   box-sizing: border-box;
   font-size: 16px;
-  height: 85px;
+  height: 95px;
   line-height: 40px;
   padding: 20px 70px 0px 70px; /* TRouBLe */
-  position: fixed;
+  position:relative;
   width: 100%;
   z-index: 1000;
-  margin: 0;
-  border-bottom: 5px solid #bf1d2b;
 }
-
+/* 
 .header h1 {
   flex: 1;
   font-size: 20px;
   font-weight: 400;
-}
+} */
 
-.header button {
+.connectButton {
   border: solid 2px #fff;
   background-color: #000;
-  color: #fff;
+  color: white; 
   margin-left: 20px;
   height: 30px;
+  font-family: 'Share Tech Mono', monospace;
+
 }
 
-.header button:hover {
-  background-color: #fff;
-  color: #000;
+.connectButton:hover {
+  color: #0fa;
+  cursor: pointer;
 }
 
 button, .firmware {
@@ -69,6 +109,7 @@ div.right {
   float: right;
   display: flex;
   align-items: center;
+  margin: 0;
 }
 
 div.clear {
@@ -76,15 +117,17 @@ div.clear {
 }
 
 .Logo {
-  width: 115px;
-  height: 40px;
+  width: 50px;
+  height: auto;
   object-fit: contain;
 }
 
 .main {
   overflow-x: hidden;
   overflow-y: auto;
-  padding-top: 80px;
+  height: 80vh;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .hidden {
@@ -98,15 +141,49 @@ div.clear {
 }
 
 .subheader {
-  height: 100px;
-  line-height: 100px;
+  margin-top: 20px;
+  height: auto;
+  /* line-height: 100px; */
   padding-left: 70px;
   padding-right: 70px;
+  /* background-color: black; */
 }
 
-.subheader .title {
-  font-size: 36px;
+.title {
+  font-size: 45px;
+  letter-spacing: 3px;
   font-weight: 500;
+  color: white;
+  font-style: bold;
+  text-shadow: 
+    0 0 1px #fff,
+    0 0 10px #0fa,
+    0 0 82px #0fa,
+    0 0 110px #0fa,
+    0 0 110px #0fa,
+    0 0 104px #0fa;
+  animation: flicker 4s infinite alternate;
+}
+
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow:
+      0 0 4px #fff,
+      0 0 11px #fff,
+      0 0 19px #fff,
+      0 0 40px #0fa,
+      0 0 80px #0fa,
+      0 0 90px #0fa,
+      0 0 100px #0fa,
+      0 0 150px #0fa;
+  }
+  20%, 24%, 55% {       
+    text-shadow: none;
+  }
+}
+
+#app {
+  margin: 0;
 }
 
 #app.connected #commands {
@@ -162,11 +239,60 @@ div.clear {
   line-height: 45px;
   padding-left: 70px;
   padding-right: 70px;
+  margin-top: 30px;
 }
 
 .footer button {
   font-size: 14px;
   margin: 0 10px;
+  color: #6f6;
+  background: none;
+}
+
+.footer button:hover {
+  color: #afa; 
+  cursor: pointer;
+}
+
+@-webkit-keyframes pulseBox {
+  0% {-webkit-box-shadow: 0px 0px 10px 0px white;}
+  100% {-webkit-box-shadow: 0px 0px 18px 0px #0fa;}
+}
+@-moz-keyframes pulseBox {
+  0% {-moz-box-shadow: 0px 0px 10px 0px white;}
+  100% {-moz-box-shadow: 0px 0px 18px 0px #0fa;}
+}
+@-o-keyframes pulseBox {
+  0% {-o-box-shadow: 0px 0px 10px 0px white;}
+  100% {-o-box-shadow: 0px 0px 18px 0px #0fa;}
+}
+@keyframes pulseBox {
+  0% {box-shadow: 0px 0px 10px 0px white;}
+  100% {box-shadow: 0px 0px 18px 0px #0fa;}
+}
+
+.pulseBox {
+  -webkit-animation-name: pulseBox;
+  -moz-animation-name: pulseBox;
+  -o-animation-name: pulseBox;
+  animation-name: pulseBox;
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  -o-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  -moz-animation-direction: alternate;
+  -o-animation-direction: alternate;
+  animation-direction: alternate;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  -o-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  border: 0px;
 }
 
 .remix {
@@ -204,7 +330,7 @@ div.clear {
   display: block;
   overflow: hidden;
   cursor: pointer;
-  border: 1px solid #900;
+  /* border: 3px solid magenta; */
   border-radius: 15px;
   transition: border 0.3s ease-in 0s;
 }
@@ -225,25 +351,22 @@ div.clear {
   padding: 0;
   line-height: 25px;
   font-size: 14px;
-  color: white;
-  font-family: proxima-nova, sans-serif;
-  font-style: normal;
   font-weight: 600;
   box-sizing: border-box;
 }
 
 .onoffswitch-inner:before {
   content: "on";
-  padding-left: 6px;
-  background-color: #bf1d2b;
-  color: #fff;
+  padding-left: 5px;
+  background-color: blue;
+  color: aqua;
 }
 
 .onoffswitch-inner:after {
   content: "off";
-  padding-right: 6px;
-  background-color: #bf1d2b;
-  color: #fff;
+  padding-right: 2px;
+  background-color: aqua;
+  color: magenta;
   text-align: right;
 }
 
@@ -256,13 +379,12 @@ div.clear {
   top: 0;
   bottom: 0;
   right: 23px;
-  border: 1px solid #900;
   border-radius: 15px;
   transition: all 0.3s ease-in 0s;
 }
 
 .onoffswitch-checkbox:checked + .onoffswitch-label {
-  border-color: #71ae1e;
+  border-color: aqua;
 }
 
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
