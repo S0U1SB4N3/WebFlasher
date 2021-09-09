@@ -6,7 +6,7 @@
 let espTool;
 let isConnected = false;
 
-const baudRates = [921600, 115200, 230400, 460800];
+const baudRates = 115200;
 const addresses = [
   	"0xfc000",
   	"0x00000",
@@ -29,7 +29,7 @@ const measurementPeriodId = '0001';
 const maxLogLength = 100;
 const log = document.getElementById('log');
 const butConnect = document.getElementById('butConnect');
-const baudRate = document.getElementById('baudRate');
+const baudRate = 115200;
 const butClear = document.getElementById('butClear');
 const butProgram = document.getElementById('butProgram');
 const autoscroll = document.getElementById('autoscroll');
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   debugConsole.addEventListener('click', clickDebugConsole);
   autoscroll.addEventListener('click', clickAutoscroll);
-  baudRate.addEventListener('change', changeBaudRate);
+  // baudRate.addEventListener('change', changeBaudRate);
   darkMode.addEventListener('click', clickDarkMode);
   window.addEventListener('error', function(event) {
     console.log("Got an uncaught error: ", event.error)
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     notSupported.classList.add('hidden');
   }
 
-  initBaudRate();
+  // initBaudRate();
   loadAllSettings();
   updateTheme();
   logMsg("WebSerial ESPTool loaded.");
@@ -173,14 +173,15 @@ async function connect() {
   });
 }
 
-function initBaudRate() {
-  for (let rate of baudRates) {
-    var option = document.createElement("option");
-    option.text = rate + " Baud";
-    option.value = rate;
-    baudRate.add(option);
-  }
-}
+// function initBaudRate() {
+  // for (let rate of baudRates) {
+    // var option = document.createElement("option");
+    // var rate = 115200;
+    // option.text = rate + " Baud";
+    // option.value = rate;
+    // baudRate.add(option);
+  // }
+// }
 
 function updateProgress(segment, percentage) {
   let part = (segment + 1.0) * (1/5) ;
@@ -341,7 +342,7 @@ async function clickConnect() {
     if (await espTool.sync()) {
       toggleUIToolbar(true);
       appDiv.classList.add("connected");
-      let baud = parseInt(baudRate.value);
+      let baud = baudRate;
       logMsg("Connected to " + await espTool.chipName());
       logMsg("MAC Address: " + formatMacAddr(espTool.macAddr()));
       var flashWriteSize = espTool.getFlashWriteSize();
@@ -359,7 +360,7 @@ async function clickConnect() {
         if (await espTool.chipType() == ESP32) {
           logMsg("WARNING: ESP32 is having issues working at speeds faster than 115200. Continuing at 115200 for now...")
         } else {
-          await changeBaudRate(baud);
+          // await changeBaudRate(baud);
         }
       }
     }
@@ -371,19 +372,19 @@ async function clickConnect() {
   }
 }
 
-/**
- * @name changeBaudRate
- * Change handler for the Baud Rate selector.
- */
-async function changeBaudRate() {
-  saveSetting('baudrate', baudRate.value);
-  if (isConnected) {
-    let baud = parseInt(baudRate.value);
-    if (baudRates.includes(baud)) {
-      await espTool.setBaudrate(baud);
-    }
-  }
-}
+// /**
+//  * @name changeBaudRate
+//  * Change handler for the Baud Rate selector.
+//  */
+// async function changeBaudRate() {
+//   saveSetting('baudrate', baudRate.value);
+//   if (isConnected) {
+//     let baud = parseInt(baudRate.value);
+//     if (baudRates.includes(baud)) {
+//       await espTool.setBaudrate(baud);
+//     }
+//   }
+// }
 
 
 window.addEventListener('hashchange', function() {
@@ -439,7 +440,7 @@ async function clickProgram() {
   }
   progress[0].classList.add("hidden");
   progress[0].querySelector("div").style.width = "0";
-  baudRate.disabled = false;
+  // baudRate.disabled = false;
   butProgram.disabled = getValidFiles().length == 0;
 }
 
@@ -544,7 +545,7 @@ function loadAllSettings() {
   // Load all saved settings or defaults
   autoscroll.checked = loadSetting('autoscroll', true);
   debugConsole.checked = loadSetting('debugConsole', true);
-  baudRate.value = loadSetting('baudrate', baudRates[0]);
+  // baudRate = 115200;
   darkMode.checked = loadSetting('darkmode', true);
 }
 
