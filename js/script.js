@@ -27,11 +27,11 @@ const colors = ['#00a7e9', '#f89521', '#be1e2d'];
 const measurementPeriodId = '0001';
 
 const maxLogLength = 100;
-const log = document.getElementById('log');
-const butConnect = document.getElementById('butConnect');
+const log = document.getElementsByClassName('log');
+const butConnect = document.getElementByClassName('butConnectButton');
 const baudRate = 115200;
-const butClear = document.getElementById('butClear');
-const butProgram = document.getElementById('butProgram');
+const butClear = document.getElementsByClassName('butClearButton');
+const butProgram = document.getElementsByClassName('butProgramButton');
 const autoscroll = document.getElementById('autoscroll');
 const debugConsole = document.getElementById('debugConsole');
 const lightSS = document.getElementById('light');

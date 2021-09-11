@@ -1,28 +1,29 @@
 /* listed here in order of appearance on index.html */
-
-.body { 
-  background-color: black;
-  height: 100vh;
+.body {
+  background-image: url(../imgs/omgBackground.png);
+  background-size: cover;
   font-family: 'Share Tech Mono', monospace;
-  font-weight: 400;
   margin: 0;
-  font-style: normal;
+  cursor: cell;
+  padding: 90px 70px 0px 70px;
+  /* background-color: black; */
+  /* overflow-y: hidden; */
 }
 
 .header {
+  /* background-color: rgb(0, 0, 72); */
   box-sizing: border-box;
-  font-size: 16px;
-  height: 95px;
-  line-height: 40px;
-  padding: 20px 70px 0px 70px; /* TRouBLe */
+  /* padding-bottom: 20px; */
   position: relative;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
   z-index: 1000;
 }
 
 .logoContainer {
   float: left;
-  display: flex;
   align-items: center;
 }
 
@@ -32,18 +33,43 @@
   object-fit: contain;
 }
 
+.omgTitleDiv {
+  text-align: center;
+  margin: 0;
+}
+
+.omgTitle {
+  font-size: 45px;
+  letter-spacing: 5px;
+  font-weight: 900;
+  color: silver; 
+  font-style: bold;
+  text-shadow: 6px 3px 10px rgba(255,0,255,1);
+}
+
+.mainContainer {
+  backdrop-filter: blur( 5px );
+  box-shadow: -4px -4px 35px 30px rgba(145, 2, 145, 0.7);
+  border: 1px solid magenta;
+  width: 80%; 
+  height: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(0, 0, 72, 0.9);
+  padding: 0;
+  border-radius: 30px;
+}
+
 .main {
-  overflow-x: hidden;
-  overflow-y: auto;
-  /* height: 80vh; */
-  padding-top: 20px;
-  padding-bottom: 20px;
+  font-style: normal;
+  font-weight: 400;
+  padding: 0px 50px 50px 50px;
 }
 
 .notSupported {
-  padding: 1em;
-  margin-top: 1em;
-  margin-bottom: 1em;
+  color: silver; 
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
 .subheader {
@@ -54,23 +80,12 @@
   padding-right: 70px;
 }
 
-.omgTitle {
-  font-size: 45px;
-  letter-spacing: 3px;
-  font-weight: 500;
-  color: white;
-  font-style: bold;
-  float: left;
-  display: flex;
-  align-items: center;
-}
-
-.darkmodeContainer {
+/* .darkmodeContainer {
   float: right;
   display: flex;
   align-items: center;
   margin: 0;
-  color: white;
+  color: black;
 }
 
 .onoffswitch {
@@ -90,8 +105,6 @@
 .onoffswitch-label {
   display: block;
   overflow: hidden;
-  cursor: pointer;
-  /* border: 3px solid magenta; */
   border-radius: 15px;
   transition: border 0.3s ease-in 0s;
 }
@@ -119,14 +132,14 @@
 .onoffswitch-inner:before {
   content: "on";
   padding-left: 5px;
-  background-color: blue;
-  color: aqua;
+  background-color: magenta;
+  color: navy; 
 }
 
 .onoffswitch-inner:after {
   content: "off";
   padding-right: 2px;
-  background-color: aqua;
+  background-color: navy; 
   color: magenta;
   text-align: right;
 }
@@ -135,7 +148,8 @@
   display: block;
   width: 19px;
   margin: 3px;
-  background: #fff;
+  background-color: navy;
+  ;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -145,7 +159,7 @@
 }
 
 .onoffswitch-checkbox:checked + .onoffswitch-label {
-  border-color: aqua;
+  border-color: navy;
 }
 
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
@@ -154,53 +168,100 @@
 
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
   right: 0px;
-  border-color: #bf1d2b;
-}
+  border-color: magenta;
+} */
 
 .app {
   margin: 0;
-  height: 50vh;
 }
 
 .commands {
-  position: relative;
-  padding-top: 80px;
-  overflow-y: auto;
+  display: column;
+  padding-top: 50px;
+  padding-bottom: 50px;
   padding: 0 60px;
   min-width: 600px;
-  justify-content: center;
-  position: relative;
+  justify-content: space-around;
   align-items: center;
 }
 
-.connectButton {
-  border: solid 2px #fff;
-  background-color: #000;
-  color: white; 
-  margin-left: 20px;
-  height: 30px;
-  font-family: 'Share Tech Mono', monospace;
+.connectButtonDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 70px;
 }
 
-.connectButton:hover {
-  color: #0fa;
-  cursor: pointer;
+.connectButton, .butProgramButton {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 18px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;      
+  box-shadow:
+  inset 0 0 50px #fff,      /* inner white */
+  inset 20px 0 80px #f0f,   /* inner left magenta short */
+  inset -20px 0 80px #0ff,  /* inner right cyan short */
+  inset 20px 0 300px #f0f,  /* inner left magenta broad */
+  inset -20px 0 300px #0ff, /* inner right cyan broad */
+  0 0 30px #fff,            /* outer white */
+  -10px 0 50px #f0f,        /* outer left magenta */
+  10px 0 50px #0ff;         /* outer right cyan */           
+}
+
+.connectButton:hover, .butProgramButton:hover {
+  color: silver;
+  transition: 0.3s;
+  cursor: cell;
+  border-radius: 50%;
+  border: 1px solid silver;
+  background: rgb(0, 0, 72);
+  box-shadow: inset 16px 16px 32px 5px rgba(255,0,255,1),
+              inset -16px -16px 32px 5px rgb(145, 2, 145);
+}
+
+.glow {
+  transition: 0.3s;
+  box-shadow: -4px -4px 30px 7px green;
+}
+
+.glow:hover {
+  box-shadow: -4px -4px 30px 7px rgb(0, 255, 0);
 }
 
 .releaseContainer {
+  margin-top: 10px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 40px;
+  margin-bottom: 70px;
 }
 
 .releaseVersionItem {
-  background-color: pink;
+  display: flex;
+  border: 1px solid rgb(1, 255, 1);
+  border-radius: 10px;
+  background-color: rgba(30, 152, 30, 0.68);
+  justify-content: center;
+  align-items: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .versionImg {
   width: 100%;
   height: auto;
   max-width: 10vw;
+}
+
+.versionLink {
+  color: silver; 
+  font-size: 15px;
+  text-decoration: none;
+  text-align: center;
+}
+.versionLink:hover {
+  cursor: cell;
 }
 
 .progressBar {
@@ -222,13 +283,6 @@
   justify-content: center;
   width: 600px;
   margin: 10px auto;
-}
-
-#butProgramButton {
-  margin-left: 10px;
-  margin-right: 10px;
-  border-width: 2px;
-  border-style: solid;
 }
 
 .log {
@@ -254,15 +308,17 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
   background-color: #000;
-  color: #cecece;
+  color: silver;
 }
 
 .footer {
+  background-color: rgb(0, 0, 72);
+  color: silver; 
   height: 45px;
   line-height: 45px;
   padding-left: 70px;
   padding-right: 70px;
-  margin-top: 30px;
+  padding-top: 30px;
 }
 
 .left {
@@ -278,28 +334,33 @@
   margin: 0;
 }
 
-.fpsCounter {
+/* .fpsCounter {
   margin-right: 10px;
 }
 
-#butClearButton {
-  margin-top: 10px;
-  font-size: 14px;
-  margin: 0 10px;
-  color: #6f6;
-  background: none;
+.butClearButton {
+  border: 1px solid magenta;
+  border-radius: 10px;
+  background-color: navy;
+  color: silver; 
+  font-size: 20px;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Share Tech Mono', monospace;
 }
 
-input, select, button, label {
+.butClearButton:hover {
+  color: magenta;
+  cursor: cell;
+} */
+
+/* input, select, button, label {
   font-weight: 600;
   outline: none;
-}
+} */
 
-
-
-
-
-
+/* 
 .commands, .log {
-  /* transition: height 0.5s; */
-}
+  transition: height 0.5s;
+} */
